@@ -1,0 +1,20 @@
+services:
+  # The Python Backend
+  - type: web
+    name: pixclad-backend
+    env: python
+    rootDir: backend
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVarGroups:
+      - name: pixclad-secrets
+
+  # The React Frontend
+  - type: web
+    name: pixclad-frontend
+    env: node
+    rootDir: frontend
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npx serve -s build"

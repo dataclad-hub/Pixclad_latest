@@ -1,0 +1,22 @@
+
+flask
+flask_sqlalchemy
+flask_login
+celery
+redis
+ultralytics
+python-dotenv
+flask_cors
+supabase
+
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+
+Pillow
+gunicorn
+
+torch==2.8.0+cpu
+torchvision==0.23.0+cpu
+
+--extra-index-url https://download.pytorch.org/whl/cpu
