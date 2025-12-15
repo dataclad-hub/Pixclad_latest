@@ -1,7 +1,7 @@
-
 flask
 flask_sqlalchemy
 flask_login
+flask-Session
 celery
 redis
 ultralytics
@@ -16,7 +16,5 @@ google-auth-oauthlib
 Pillow
 gunicorn
 
-torch==2.8.0+cpu
-torchvision==0.23.0+cpu
-
---extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision

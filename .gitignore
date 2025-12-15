@@ -8,6 +8,8 @@ dist/
 # Python virtual environment
 .venv/
 venv/
+env/
+.env/
 
 # Secrets
 .env
