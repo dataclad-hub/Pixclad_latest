@@ -8,6 +8,7 @@ ultralytics
 python-dotenv
 flask_cors
 supabase
+libgl1-mesa-glx
 
 google-api-python-client
 google-auth-httplib2
