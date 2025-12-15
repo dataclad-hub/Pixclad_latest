@@ -39,7 +39,7 @@ if IS_RENDER:
     app.config["SESSION_COOKIE_SECURE"] = True
     app.config["SESSION_COOKIE_SAMESITE"] = "None"
     # 🔥 IMPORTANT — backend domain for OAuth cookie
-    app.config["SESSION_COOKIE_DOMAIN"] = "pixclad-backend.onrender.com"
+    app.config["SESSION_COOKIE_DOMAIN"] = "pixclad-backend.up.railway.app"
 else:
     app.config["SESSION_COOKIE_SECURE"] = False
     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
@@ -53,7 +53,7 @@ Session(app)
 CORS(
     app,
     origins=[
-        "https://pixclad-frontend.onrender.com",  # Frontend (static site)
+        "https://pixclad-frontend.up.railway.app",  # Frontend (static site)
         "http://localhost:3000"                  # Local React
     ],
     supports_credentials=True
