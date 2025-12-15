@@ -1,6 +1,0 @@
-[phases.install]
-cmd = "npm install"
-
-[phases.build]
-builder = "NIXPACKS"
-cmd = "npm run build"
