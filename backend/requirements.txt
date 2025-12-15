@@ -8,7 +8,6 @@ ultralytics
 python-dotenv
 flask_cors
 supabase
-opencv-python-headless
 
 google-api-python-client
 google-auth-httplib2
