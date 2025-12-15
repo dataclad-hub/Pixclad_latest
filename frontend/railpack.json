@@ -1,8 +1,10 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
+  "install":{
+    "installCommand": "npm install"
+  },
   "build": {
     "builder": "RAILPACK",
-    "installCommand": "npm install",
     "buildCommand": "npm run build"
   },
   "deploy": {
