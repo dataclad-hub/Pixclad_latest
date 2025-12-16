@@ -5,7 +5,6 @@ flask-Session
 celery
 redis
 ultralytics
-opencv-python-headless
 python-dotenv
 flask_cors
 supabase
