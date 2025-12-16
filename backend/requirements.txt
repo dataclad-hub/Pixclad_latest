@@ -5,10 +5,10 @@ flask-Session
 celery
 redis
 ultralytics
+opencv-python-headless
 python-dotenv
 flask_cors
 supabase
-opencv-python-headless
 
 google-api-python-client
 google-auth-httplib2
