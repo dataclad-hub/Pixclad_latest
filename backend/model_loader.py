@@ -68,9 +68,10 @@ def get_image_tags(image_path):
                 for obb in r.obb:
                     cls_id = int(obb.cls[0])           # class id
                     class_name = names[cls_id]   # class label
-                    conf = float(obb.conf[0])          # confidence
                     detected_classes.add(class_name)
-                    print(conf)
+                    conf = round(float(obb.conf[0]), 2)          # confidence
+                    detected_classes.add(conf)
+                    print(detected_classes)
         return list(detected_classes)
             # else:
             #     print("No objects detected")

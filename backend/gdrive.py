@@ -234,7 +234,7 @@ def process_gdrive_folder(folder_id):
                 f.write(fh.getvalue())
 
             tags = get_image_tags(temp_path)
-            category = tags[0] if tags and tags[0] != "Error" else "Uncategorized"
+            category = tags[1] if tags and tags[1] != "Error" else "Uncategorized"
 
             if destination == 'local':
                 os.makedirs(os.path.join(OUTPUT_FOLDER, category), exist_ok=True)

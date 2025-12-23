@@ -162,7 +162,7 @@ def process_upload():
             file.save(temp_path)
 
             tags = get_image_tags(temp_path)
-            category = tags[0] if tags and tags[0] != "Error" else "Uncategorized"
+            category = tags[1] if tags and tags[1] != "Error" else "Uncategorized"
             results[filename] = tags
 
             if destination == 'local':

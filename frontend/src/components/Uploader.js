@@ -106,7 +106,7 @@ export default function Uploader() {
     try {
       const res = await axios.post(`${API_BASE_URL}/auth/gdrive/process-folder/${folderId}`, { destination: gdriveDestination }, { withCredentials: true });
       let successMessage = res.data?.message || "Processing complete.";
-      if (gdriveDestination !== "local" && !successMessage.includes("Output")) successMessage += " Results saved in the destination Drive 'Output' folder.";
+      if (gdriveDestination !== "local" && !successMessage.includes("Output")) successMessage += " Results saved at the selected location's 'Output' folder.";
       setGdriveMessage(successMessage); setGdriveResults(res.data?.results || {});
     } catch (err) {
       setGdriveMessage(err?.response?.status === 401 && gdriveDestination === "gdrive-destination" ? "Error: Destination not connected." : "Error processing folder.");
@@ -249,7 +249,7 @@ export default function Uploader() {
 
                 <div style={styles.field}>
                   <div style={{display: "flex", justifyContent: "center", padding: "12px", marginTop: 28}}>
-                    <StepTitle number="2">Output Destination</StepTitle>
+                    <StepTitle number="2">Select Output Location</StepTitle>
                   </div>
                   <div style={{ fontSize: 14, color: "#6b7280"}}>Where should the processed files be saved?</div>
                   <select value={gdriveDestination} onChange={(e) => setGdriveDestination(e.target.value)} style={styles.select}>
@@ -262,11 +262,11 @@ export default function Uploader() {
                     <div style={{ marginTop: 12 }}>
                       {!isDestinationConnected ? (
                         <a href={`${API_BASE_URL}/auth/gdrive/login-destination`} style={{ textDecoration: "none" }}>
-                          <OutlineButton>Connect Destination Drive</OutlineButton>
+                          <OutlineButton>Connect Output Drive</OutlineButton>
                         </a>
                       ) : (
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-                          <div style={{ padding: 10, borderRadius: 8, background: "#e9f7ef", color: DEEP_BLUE }}>✅ Destination Drive Connected</div>
+                          <div style={{ padding: 10, borderRadius: 8, background: "#e9f7ef", color: DEEP_BLUE }}>✅ Output Drive Connected</div>
                           <a href={`${API_BASE_URL}/auth/gdrive/logout-destination`} style={{ textDecoration: "none" }}>
                             <button style={{ background: "transparent", border: "none", color: CORAL_RED, cursor: "pointer", fontWeight: 700 }}>Change</button>
                           </a>
@@ -311,6 +311,7 @@ export default function Uploader() {
                       </div>
                     )}
                   </div>
+                  {isProcessingFolder && <div style={{ marginTop: 8 }}><progress style={{ width: "100%" }} /></div>}
                 </div>
 
                 <div style={{ marginTop: 16 }}>
@@ -318,7 +319,7 @@ export default function Uploader() {
                   {Object.keys(gdriveResults).length > 0 && (
                     <div style={styles.resultBox}><div style={{ fontWeight: 700, marginBottom: 8, color: LIGHT_BG }}>Processing Summary</div>
                       <div style={{ display: "grid", gap: 8 }}>
-                        {Object.entries(gdriveResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[0] || "Uncategorized"}</div></div>))}
+                        {Object.entries(gdriveResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[1] || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags?.[0] || "Uncategorized"}</div></div>))}
                       </div>
                     </div>
                   )}
@@ -329,7 +330,7 @@ export default function Uploader() {
                 <div style={{display: "flex", justifyContent: "center", padding: "12px"}}>
                   <StepTitle number="1">Select Output Location</StepTitle>
                 </div>
-                <div style={{ fontSize: 14, color: "#6b7280", marginBottom: 8 }}>Choose where processed files should be saved.</div>
+                <div style={{ fontSize: 14, color: "#6b7280", marginBottom: 8 }}>Where should the processed files be saved?</div>
                 <div><select value={localDestination} onChange={(e) => setLocalDestination(e.target.value)} style={styles.select}><option value="local">Download Locally</option><option value="gdrive">Save to Google Drive</option></select></div>
 
                 {localDestination === "gdrive" && (
@@ -368,7 +369,7 @@ export default function Uploader() {
                   {Object.keys(localResults).length > 0 && (
                     <div style={styles.resultBox}><div style={{ fontWeight: 700, marginBottom: 8, color: LIGHT_BG }}>Local Upload Summary</div>
                       <div style={{ display: "grid", gap: 8 }}>
-                        {Object.entries(localResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[0] || "Uncategorized"}</div></div>))}
+                        {Object.entries(localResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[1] || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags?.[0] || "Uncategorized"}</div></div>))}
                       </div>
                     </div>
                   )}
