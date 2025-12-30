@@ -319,7 +319,7 @@ export default function Uploader() {
                   {Object.keys(gdriveResults).length > 0 && (
                     <div style={styles.resultBox}><div style={{ fontWeight: 700, marginBottom: 8, color: LIGHT_BG }}>Processing Summary</div>
                       <div style={{ display: "grid", gap: 8 }}>
-                        {Object.entries(gdriveResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[1] || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags?.[0] || "Uncategorized"}</div></div>))}
+                        {Object.entries(gdriveResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags[0]?.name || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags[0]?.conf || "0.00"}</div></div>))}
                       </div>
                     </div>
                   )}
@@ -369,7 +369,7 @@ export default function Uploader() {
                   {Object.keys(localResults).length > 0 && (
                     <div style={styles.resultBox}><div style={{ fontWeight: 700, marginBottom: 8, color: LIGHT_BG }}>Local Upload Summary</div>
                       <div style={{ display: "grid", gap: 8 }}>
-                        {Object.entries(localResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags?.[1] || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags?.[0] || "Uncategorized"}</div></div>))}
+                        {Object.entries(localResults).map(([name, tags]) => (<div key={name} style={{ display: "flex", justifyContent: "space-between" }}><div>{name}</div><div style={{ color: CORAL_RED }}>{tags[0]?.name || "Uncategorized"}</div><div style={{ color: LIGHT_BG }}>{tags[0]?.conf || "0.00"}</div></div>))}
                       </div>
                     </div>
                   )}
