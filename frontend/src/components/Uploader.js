@@ -203,7 +203,7 @@ export default function Uploader() {
     field: { marginTop: 12, display: "flex", flexDirection: "column", gap: 8, color: DEEP_BLUE },
     select: { padding: "10px 12px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.08)", background: LIGHT_BG },
     listItem: { padding: 12, borderRadius: 8, border: "1px solid rgba(0,0,0,0.04)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
-    resultBox: { marginTop: 14, padding: 12, borderRadius: 8, background: DEEP_BLUE, border: "1px solid #eee" },
+    resultBox: { marginTop: 14, padding: 12, borderRadius: 8, background: DEEP_BLUE, border: "1px solid #eee", overflow: "auto", height: "200px" },
   };
 
   return (
