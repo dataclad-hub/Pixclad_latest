@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import Avatar from '@mui/material/Avatar';
+import logo from '../logo.png'
 // --- END OF IMPORTS ---
 
 function UpdatePassword() {
